@@ -51,6 +51,77 @@ The application will be accessible at http://localhost:5211.
 ## Walkthrough
 A complete walkthrough video demonstrating the application, its functionality, and the process of invoking it from the command line can be found at the following link: https://drive.google.com/file/d/1Xvd1ffYWVX9Lyf627UhCuv_sEtp4Vu75/view?usp=sharing
 
+**Steps Demonstrated Video Walkthrough**:
+
+Step 1. GET Request
+- Endpoint: http://localhost:5211/api/product
+- Expected Response:
+  - Status: 200 OK
+  - Body: [] (empty array)
+ 
+Step 2. POST Request
+- Endpoint: http://localhost:5211/api/product
+- Body: ` {
+    "name": "Sample Product",
+    "description": "This is a sample product description.",
+    "price": 19.99
+} `
+- Headers: Content-Type: application/json
+- Expected Response:
+  - Status: 201 Created
+  - Body: `{
+    "id": 1,
+    "name": "Sample Product",
+    "description": "This is a sample product description.",
+    "price": 19.99
+}`
+
+Step 3. GET Request by ID
+- Endpoint: http://localhost:5211/api/product/{id}
+- Expected Response:
+  - Status: 200 OK
+  - Body: `{
+    "id": 1,
+    "name": "Sample Product",
+    "price": 19.99,
+    "description": "This is a sample product description."
+}`
+
+Step 4. PUT Request by ID
+- Endpoint: http://localhost:5211/api/product/{id}
+- Body: `{
+    "id": 1,
+    "name": "Updated Product",
+    "price": 29.99,
+    "description": "This is an updated product description."
+}`
+- Expected Response:
+  - Status: 204 No Content
+  - Body: No body returned
+
+Step 5. GET Request by ID (After Update)
+- Endpoint: http://localhost:5211/api/product/{id}
+- Expected Response:
+  - Status: 200 OK
+  - Body: `{
+    "id": 1,
+    "name": "Updated Product",
+    "price": 29.99,
+    "description": "This is an updated product description."
+}`
+
+Step 6. DELETE Request by ID
+- Endpoint: http://localhost:5211/api/product/{id}
+- Expected Response:
+  - Status: 204 No Content
+  - Body: No body returned
+
+Step 7. GET Request (After Deletion)
+- Endpoint: http://localhost:5211/api/product
+- Expected Response:
+  - Status: 200 OK
+  - Body: [] (empty array)
+
 ## Tools and Technologies
 **Frontend Framework**:
 - HTML/CSS
